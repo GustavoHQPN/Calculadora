@@ -1,0 +1,120 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.2em;
+}
+
+p {
+    margin-bottom: 1.5em;
+}
+
+.calculator {
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    width: 360px;
+}
+
+.display-container {
+    background-color: #000;
+    border-radius: 5px;
+    box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.5);
+    overflow: hidden;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.display {
+    color: #0f0;
+    font-size: 2.5em;
+    text-align: right;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 50px;
+}
+
+.botoes, .botoes-Cientifica {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+button {
+    background-color: #444;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.2em;
+    padding: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    background-color: #666;
+    box-shadow: 0 2px rgba(0, 0, 0, 0.2);
+    transform: translateY(2px);
+}
+
+button:hover {
+    background-color: #555;
+}
+
+button:nth-child(4n+4) {
+    background-color: #f39c12;
+    color: #000;
+}
+
+button:nth-child(4n+4):hover {
+    background-color: #e67e22;
+}
+
+button:nth-child(4n+4):active {
+    background-color: #d35400;
+}
+
+#botoesCientifica {
+    display: none;
+    margin-top: 10px;
+}
+
+.botoes-Cientifica button {
+    background-color: #777;
+}
+
+.botoes-Cientifica button:hover {
+    background-color: #888;
+}
+
+.botoes-Cientifica button:active {
+    background-color: #999;
+}
+
+button:nth-child(16) {
+    background-color: #2ecc71;
+}
+
+button:nth-child(16):hover {
+    background-color: #27ae60;
+}
+
+button:nth-child(16):active {
+    background-color: #229954;
+}
