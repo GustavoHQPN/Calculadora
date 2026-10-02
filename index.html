@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Científica Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Fonte Inter via Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="background-glow"></div>
+
+    <main class="container">
+        <header class="app-header">
+            <span class="badge">Portfólio Project</span>
+            <h1>Calculadora Científica</h1>
+            <p>Interface moderna, processamento de expressões seguro e feedback sonoro.</p>
+        </header>
+
+        <section class="calculator" aria-label="Calculadora">
+            <div class="display-container">
+                <div class="display-header">
+                    <span id="modeIndicator" class="mode-tag">DEG</span>
+                    <span id="scientificBadge" class="status-tag">PADRÃO</span>
+                </div>
+                <div class="expression" id="expressionDisplay" aria-live="polite"></div>
+                <div class="result" id="resultDisplay" aria-live="polite">0</div>
+            </div>
+
+            <div class="controls-bar">
+                <button type="button" class="btn-toggle" id="btnToggleSci" onclick="toggleScientific()">
+                    <span>Modo Científico</span>
+                    <span class="toggle-icon">✦</span>
+                </button>
+                <button type="button" class="btn-toggle-unit" id="btnToggleUnit" onclick="toggleAngleUnit()">
+                    <span id="unitText">DEG</span>
+                </button>
+            </div>
+
+            <!-- Botões Científicos -->
+            <div class="keypad scientific-keypad" id="botoesCientifica">
+                <button type="button" class="btn-sci" onclick="appendCharacter('sin(')">sin</button>
+                <button type="button" class="btn-sci" onclick="appendCharacter('cos(')">cos</button>
+                <button type="button" class="btn-sci" onclick="appendCharacter('tan(')">tan</button>
+                <button type="button" class="btn-sci" onclick="appendCharacter('log(')">log</button>
+                <button type="button" class="btn-sci" onclick="appendCharacter('ln(')">ln</button>
+                <button type="button" class="btn-sci" onclick="appendCharacter('sqrt(')">√</button>
+                <button type="button" class="btn-sci" onclick="appendCharacter('^')">x^y</button>
+                <button type="button" class="btn-sci" onclick="appendCharacter('(')">(</button>
+                <button type="button" class="btn-sci" onclick="appendCharacter(')')">)</button>
+                <button type="button" class="btn-sci" onclick="appendCharacter('π')">π</button>
+            </div>
+
+            <!-- Botões Padrão -->
+            <div class="keypad standard-keypad">
+                <button type="button" class="btn-danger" onclick="clearDisplay()">AC</button>
+                <button type="button" class="btn-action" onclick="deleteDigit()">⌫</button>
+                <button type="button" class="btn-action" onclick="appendCharacter('%')">%</button>
+                <button type="button" class="btn-operator" onclick="appendCharacter('/')">÷</button>
+
+                <button type="button" onclick="appendCharacter('7')">7</button>
+                <button type="button" onclick="appendCharacter('8')">8</button>
+                <button type="button" onclick="appendCharacter('9')">9</button>
+                <button type="button" class="btn-operator" onclick="appendCharacter('*')">×</button>
+
+                <button type="button" onclick="appendCharacter('4')">4</button>
+                <button type="button" onclick="appendCharacter('5')">5</button>
+                <button type="button" onclick="appendCharacter('6')">6</button>
+                <button type="button" class="btn-operator" onclick="appendCharacter('-')">−</button>
+
+                <button type="button" onclick="appendCharacter('1')">1</button>
+                <button type="button" onclick="appendCharacter('2')">2</button>
+                <button type="button" onclick="appendCharacter('3')">3</button>
+                <button type="button" class="btn-operator" onclick="appendCharacter('+')">+</button>
+
+                <button type="button" class="btn-zero" onclick="appendCharacter('0')">0</button>
+                <button type="button" onclick="appendCharacter('.')">.</button>
+                <button type="button" class="btn-equals" onclick="calculateResult()">=</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

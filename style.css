@@ -1,0 +1,322 @@
+:root {
+    --bg-color: #0b0f19;
+    --card-bg: rgba(22, 30, 46, 0.7);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --display-bg: rgba(10, 14, 23, 0.85);
+    
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
+    --accent: #06b6d4;
+    --danger: #ef4444;
+    --danger-hover: #dc2626;
+    
+    --text-main: #f3f4f6;
+    --text-muted: #9ca3af;
+    --btn-bg: rgba(255, 255, 255, 0.05);
+    --btn-hover: rgba(255, 255, 255, 0.12);
+    --btn-active: rgba(255, 255, 255, 0.2);
+    
+    --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    --radius-lg: 24px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    overflow-x: hidden;
+    padding: 20px;
+    position: relative;
+}
+
+/* Fundo com efeito de brilho e gradiente */
+.background-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(6, 182, 212, 0.05) 50%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.container {
+    width: 100%;
+    max-width: 420px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.app-header {
+    text-align: center;
+}
+
+.app-header h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin: 8px 0 4px;
+}
+
+.app-header p {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: rgba(99, 102, 241, 0.15);
+    color: var(--primary);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 20px;
+}
+
+/* Card Principal da Calculadora */
+.calculator {
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Visor */
+.display-container {
+    background: var(--display-bg);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    min-height: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: right;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.display-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.mode-tag {
+    color: var(--accent);
+}
+
+.status-tag {
+    color: var(--text-muted);
+}
+
+.expression {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    min-height: 1.4em;
+    word-break: break-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.result {
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: var(--text-main);
+    word-break: break-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Barra de Controles / Modos */
+.controls-bar {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-toggle {
+    flex: 1;
+    background: var(--btn-bg);
+    border: 1px solid var(--card-border);
+    color: var(--text-main);
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: var(--transition);
+}
+
+.btn-toggle:hover {
+    background: var(--btn-hover);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.btn-toggle-unit {
+    background: var(--btn-bg);
+    border: 1px solid var(--card-border);
+    color: var(--accent);
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-toggle-unit:hover {
+    background: var(--btn-hover);
+}
+
+/* Grade de Teclas */
+.keypad {
+    display: grid;
+    gap: 10px;
+}
+
+.standard-keypad {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.scientific-keypad {
+    grid-template-columns: repeat(5, 1fr);
+    display: none;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.scientific-keypad.active {
+    display: grid;
+}
+
+button {
+    font-family: inherit;
+    background: var(--btn-bg);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: var(--radius-md);
+    color: var(--text-main);
+    font-size: 1.15rem;
+    font-weight: 500;
+    height: 54px;
+    cursor: pointer;
+    transition: var(--transition);
+    user-select: none;
+    outline: none;
+}
+
+button:hover {
+    background: var(--btn-hover);
+    transform: translateY(-1px);
+}
+
+button:active {
+    background: var(--btn-active);
+    transform: translateY(1px);
+}
+
+/* Estilos de Botões Específicos */
+.btn-operator {
+    color: var(--accent);
+    font-weight: 600;
+    background: rgba(6, 182, 212, 0.08);
+}
+
+.btn-operator:hover {
+    background: rgba(6, 182, 212, 0.18);
+}
+
+.btn-action {
+    color: var(--primary);
+    background: rgba(99, 102, 241, 0.08);
+}
+
+.btn-danger {
+    color: var(--danger);
+    background: rgba(239, 68, 68, 0.1);
+    font-weight: 600;
+}
+
+.btn-danger:hover {
+    background: var(--danger);
+    color: #fff;
+}
+
+.btn-equals {
+    background: var(--primary);
+    color: #fff;
+    font-weight: 600;
+    grid-column: span 2;
+}
+
+.btn-equals:hover {
+    background: var(--primary-hover);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+
+.btn-sci {
+    font-size: 0.85rem;
+    height: 44px;
+    color: var(--text-muted);
+}
+
+.btn-sci:hover {
+    color: var(--text-main);
+}
+
+.btn-zero {
+    grid-column: span 1;
+}
+
+/* Ajustes para Telas Menores */
+@media (max-width: 480px) {
+    body {
+        padding: 12px;
+    }
+
+    .calculator {
+        padding: 16px;
+        border-radius: 18px;
+    }
+
+    button {
+        height: 48px;
+        font-size: 1rem;
+    }
+
+    .btn-sci {
+        height: 40px;
+        font-size: 0.75rem;
+    }
+}
